@@ -1,0 +1,33 @@
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center"><br> Add Admin</h2>
+                <form action="/superAdmin/add-admin" method="post" enctype="multipart/form-data">
+                    <label for="">Name</label>
+                    <input type="text" name="Name" class="form-control"><br>
+                    
+                    <label for="">Email</label>
+                    <input type="email" name="Email" class="form-control" required>
+
+                    {{#if err}}  {{err}} {{/if}} <br>
+
+                    <label for="">Password</label>
+                    <input type="password" name="Password" class="form-control" required><br>
+
+                    <label for="">Image</label>
+                    <img src="" style="width: 10rem;" alt="" id="imgView" class="p-3">
+                    <input type="file" name="Image" class="form-control" onchange="viewImage(event)">
+
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function viewImage(event){
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

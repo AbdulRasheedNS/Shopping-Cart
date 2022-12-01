@@ -1,0 +1,40 @@
+<section>
+    <div class="container">
+        <div class="row mt-4">
+            <h3>Admins</h3>
+            <a href="/superAdmin/add-admin" class="btn btn-success ml-auto">Add Admin</a>
+        </div><br>
+        <table class="table mt-5" id="adminTable">
+            <thead>
+                <tr>
+                    <th scope="col">No:</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email id</th>
+                    <th>Image</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each admins}}
+                <tr>
+                    <th scope="row">{{index @index}}</th>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Email}}</td>
+                    <td><img style="height: 50px;" src="/admin-images/{{this._id}}.jpg" alt=""></td>
+                    <td>
+                        {{!-- <a href="/superAdmin/edit-admin/{{this._id}}" class="btn btn-primary">Edit</a> --}}
+                        <a href="/superAdmin/remove-admin/{{this._id}}" class="btn btn-danger">Remove</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<script>
+    $(function () {
+        $('#adminTable').DataTable();
+    });
+</script>

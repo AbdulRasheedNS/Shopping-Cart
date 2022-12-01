@@ -1,0 +1,41 @@
+<section>
+    <div class="container"><br>
+    <h3>All Users</h3><br>
+        <table class="table mt-5" id="adminTable">
+            <thead>
+                <tr>
+                    <th scope="col">No:</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email id</th>
+                    <th>Image</th>
+                    {{#if admin}}
+                    <th>Options</th>
+                    {{/if}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <th scope="row">{{index @index}}</th>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Email}}</td>
+                    <td><img style="height: 50px;" src="/user-images/{{this._id}}.jpg" alt=""></td>
+                    {{#if ../admin}}
+                    <td>
+                        {{!-- <a href="/admin/edit-user/{{this._id}}" class="btn btn-primary">Edit</a> --}}
+                        <a href="/admin/remove-user/{{this._id}}" class="btn btn-danger">Remove User</a>
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<script>
+    $(function () {
+        $('#adminTable').DataTable();
+    });
+</script>

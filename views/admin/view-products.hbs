@@ -1,0 +1,53 @@
+<section>
+    <div class="container">
+        <div class="row mt-4 ">
+            <h3 class="ml-5">All Products</h3>
+        <div class="row ml-auto ">
+            {{#if admin}}
+            <a href="/admin/add-product" class="btn btn-success ml-auto">Add Product</a>
+            {{/if}}
+        </div>
+        </div> <br>
+        <table class="table mt-5" id="productsTable">
+            <thead>
+                <tr class="m-5">
+                    <th scope="col">No:</th>
+                    <th scope="col">Titile</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th>Image</th>
+                    {{#if admin}}
+                    <th>Options</th>
+                    {{/if}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <th scope="row">{{index @index}}</th>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Category}}</td>
+                    <td>Rs {{this.Price}}/-</td>
+                    <td>{{this.Description}}</td>
+                    <td><img style="height: 50px;" src="/product-images/{{this._id}}.jpg" alt=""></td>
+                    {{#if ../admin}}
+                    <td>
+                        <a href="/admin/edit-product/{{this._id}}" class="btn btn-primary">Edit</a>
+                        <a href="/admin/delete-product/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Are you want to Delete {{this.Name}} ?')">Delete</a>
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<script>
+    $(function () {
+        $('#productsTable').DataTable();
+    });
+</script>

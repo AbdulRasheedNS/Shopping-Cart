@@ -1,0 +1,50 @@
+<section>
+    <div class="container mt-5">
+        <table class="table mt-5" id="ordersTable">
+            <div class="row mt-4 ">
+            <h3 class="ml-5">All Orders</h3>
+            </div><br>
+            <thead>
+                <tr>
+                    <th scope="col">No:</th>
+                    <th scope="col">Date:</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Pincode</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">Status</th>
+                    {{#if admin}}
+                    <th scope="col">Options</th>
+                    {{/if}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orders}}
+                <tr>
+                    <th scope="row">{{index @index}}</th>
+                    <th scope="row">{{this.date}}</th>
+                    <td>{{this.deliveryDetails.address}}</td>
+                    <td>{{this.deliveryDetails.pincode}}</td>
+                    <td>{{this.deliveryDetails.mobile}}</td>
+                    <td>Rs {{this.totalAmount}}/-</td>
+                    <td>{{this.paymentMethod}}</td>
+                    <td>{{this.status}}</td>
+                    {{#if ../admin}}
+                    <td>
+                        <a href="/admin/view-order-products/{{this._id}}" class="btn btn-danger">View Products</a>
+                        <a href="/admin/ship-products/{{this._id}}" class="btn btn-success mt-1">Ship  Product</a>
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    $(function(){
+        $('#ordersTable').DataTable();
+    });
+</script>
