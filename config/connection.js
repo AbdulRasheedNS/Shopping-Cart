@@ -4,7 +4,7 @@ const state={
 }
 
 module.exports.connect=function(done){
-    const url='mongodb://0.0.0.0:27017'
+    const url='mongodb+srv://AbdulRasheedNS:<password>@cluster0.ftsizz2.mongodb.net/?retryWrites=true&w=majority'
     const dbname='shopping'
 
     mongoClient.connect(url,(err,data)=>{
