@@ -17,6 +17,7 @@
     "fileupload": "^0.2.1",
     "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
+    "mongoose": "^6.8.3",
     "morgan": "~1.9.1",
     "promise": "^8.3.0",
     "razorpay": "^2.8.3"
