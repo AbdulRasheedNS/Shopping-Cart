@@ -31,26 +31,26 @@
 //   })
 //   client.close();
 // });
-const mongoClient = require('mongodb').MongoClient
-const state = {
-    db: 'shopping'
-}
+// const mongoClient = require('mongodb').MongoClient
+// const state = {
+//     db: 'shopping'
+// }
 
-module.exports.connect = function (done) {
-    const url = `mongodb+srv://AbdulRasheedNS:66252442@cluster0.ftsizz2.mongodb.net/?retryWrites=true&w=majority`;
+// module.exports.connect = function (done) {
+//     const url = `mongodb+srv://AbdulRasheedNS:66252442@cluster0.ftsizz2.mongodb.net/?retryWrites=true&w=majority`;
 
-    const connectionParams = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }
-    mongoClient.connect(url, connectionParams)
-        .then(() => {
-            console.log('Connected to the database ')
-        })
-        .catch((err) => {
-            console.error(`Error connecting to the database. n${err}`);
-        })
-}
-module.exports.get = function () {
-    return state.db
-}
+//     const connectionParams = {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     }
+//     mongoClient.connect(url, connectionParams)
+//         .then(() => {
+//             console.log('Connected to the database ')
+//         })
+//         .catch((err) => {
+//             console.error(`Error connecting to the database. n${err}`);
+//         })
+// }
+// module.exports.get = function () {
+//     return state.db
+// }
