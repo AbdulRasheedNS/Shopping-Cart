@@ -4,7 +4,7 @@ const state={
 }
 
 module.exports.connect=function(done){
-    const url='mongodb+srv://AbdulRasheedNS:66252442@cluster0.ftsizz2.mongodb.net/?retryWrites=true&w=majority'
+    const url='mongodb+srv://AbdulRasheedNS:NSAbdu@cluster0.ftsizz2.mongodb.net/?retryWrites=true&w=majority'
     // const url='mongodb://0.0.0.0:27017'
     const dbname='shopping'
 
