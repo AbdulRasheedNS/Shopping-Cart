@@ -19,6 +19,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^6.8.3",
     "morgan": "~1.9.1",
+    "netlify": "^13.1.0",
     "promise": "^8.3.0",
     "razorpay": "^2.8.3"
   },
