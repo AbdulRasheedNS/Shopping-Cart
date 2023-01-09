@@ -19,10 +19,10 @@
                     <td>{{this.product.Price}}</td>
                     <td>
                         <button class="cart-item-count btn mr-3"
-                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1,{{this.quantity}})">-</button>
                         <span id="{{this.product._id}}">{{this.quantity}}</span>
                         <button class="cart-item-count btn ml-3"
-                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1,{{this.quantity}})">+</button>
                     </td>
                     <td><button class="btn btn-danger"
                             onclick="removeProduct('{{this._id}}','{{this.product._id}}')">Remove</button></td>
@@ -41,7 +41,7 @@
 </section>
 
 <script>
-    function changeQuantity(cartId, proId, userId, count) {
+    function changeQuantity(cartId, proId, userId, count,currentQuantity) {
         let quantity = parseInt(document.getElementById(proId).innerHTML)
         count = parseInt(count)
         console.log(userId)

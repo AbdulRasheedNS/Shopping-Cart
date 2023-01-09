@@ -5,6 +5,8 @@ var productHelpers = require('../helpers/product-helpers')
 const adminHelpers = require('../helpers/admin-helpers');
 const async = require('hbs/lib/async');
 const userHelpers = require('../helpers/user-helpers');
+const fileUpload = require('express-fileupload');
+var fs = require('fs')
 
 const verifyLogin=(req,res,next)=>{
   if(req.session.adminLoggedIn){
@@ -25,7 +27,13 @@ router.get('/add-product',verifyLogin, function (req, res) {
   res.render('admin/add-product', { admin:req.session.admin })
 })
 router.post('/add-product', (req, res) => {
-  productHelpers.addProduct(req.body, (id) => {
+  let imageFile
+  if(req.files){
+    imageFile=true
+  }else{
+    imageFile=false
+  }
+  productHelpers.addProduct(req.body,imageFile, (id) => {
     if(req.files){
     let image = req.files.Image
     image.mv('./public/product-images/' + id + '.jpg', (err, done) => {
@@ -44,10 +52,14 @@ router.post('/add-product', (req, res) => {
 router.get('/delete-product/:id',verifyLogin, (req, res) => {
   let proId = req.params.id
   console.log(proId);
-  productHelpers.deleteProduct(proId).then((response) => {
+  productHelpers.deleteProduct(proId).then((image) => {
     res.redirect('/admin')
+    if (image) {
+      fs.unlinkSync('./public/product-images/' + proId + '.jpg')
+    }
   })
 })
+//edit product
 router.get('/edit-product/:id',verifyLogin, async (req, res) => {
   let proId = req.params.id
   let product = await productHelpers.getProductDetails(proId)

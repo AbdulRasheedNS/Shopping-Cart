@@ -3,11 +3,12 @@ var collection = require('../config/collections')
 const { promise, reject } = require('bcrypt/promises')
 const { PRODUCT_COLLECTION } = require('../config/collections')
 const { response, get } = require('../app')
+const async = require('hbs/lib/async')
 var objectId = require('mongodb').ObjectId
 module.exports = {
 
-    addProduct: (product, callback) => {
-
+    addProduct: (product,imageFile, callback) => {
+        product.image=imageFile
         db.get().collection('product').insertOne(product).then((data) => {
             callback(data.insertedId)
         })
@@ -19,10 +20,12 @@ module.exports = {
         })
     },
     deleteProduct: (prodId) => {
-        return new Promise((resolve, reject) => {
-            db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({ _id: objectId(prodId) }).then((response) => {
+        return new Promise(async(resolve, reject) => {
+            let product = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({ _id: objectId(prodId) })
+            console.log(product.image);
+            db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({ _id: objectId(prodId) }).then(() => {
                 //console.log(response);
-                resolve(response)
+                resolve(product.image)
             })
         })
     },

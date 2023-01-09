@@ -39,7 +39,7 @@ app.use(session({ secret: "Key", cookie: { maxAge: 600000 } }))
 
 db.connect((err) => {
   if (err) console.log("Connection Error" + err);
-  else console.log("Database Connected to Port27017");
+  else console.log("Database Connected to MongoDB Atlas");
 })
 
 app.use('/', userRouter);
