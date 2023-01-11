@@ -212,7 +212,11 @@ module.exports = {
 
 
             ]).toArray()
+            if(total[0]){
             resolve(total[0].total)
+            }else{
+                resolve()
+            }
         
         })
     },
