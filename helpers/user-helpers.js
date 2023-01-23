@@ -346,7 +346,7 @@ module.exports = {
                 $set:{
                     Name:userDetails.Name
                 }
-            }).then((user)=>{
+            }).then(()=>{
                 db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)}).then((user)=>{
                     resolve(user)
                 })
