@@ -1,6 +1,6 @@
 var express = require('express');
 const async = require('hbs/lib/async');
-const { response } = require('../app');
+const { response } = require('../server');
 var router = express.Router();
 const productHelpers = require('../helpers/product-helpers');
 const userHelpers = require('../helpers/user-helpers')
