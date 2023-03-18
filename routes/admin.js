@@ -1,5 +1,5 @@
 var express = require('express');
-const { response, resource } = require('../server');
+const { response, resource } = require('../app');
 var router = express.Router();
 var productHelpers = require('../helpers/product-helpers')
 const adminHelpers = require('../helpers/admin-helpers');

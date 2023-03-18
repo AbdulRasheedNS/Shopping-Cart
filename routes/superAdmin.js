@@ -1,7 +1,7 @@
 var express = require('express');
 const async = require('hbs/lib/async');
 const { Db } = require('mongodb');
-const { response } = require('../server');
+const { response } = require('../app');
 var router = express.Router();
 const productHelpers = require('../helpers/product-helpers');
 const adminHelpers = require('../helpers/admin-helpers');
